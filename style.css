@@ -1,0 +1,502 @@
+/* =========================================
+   MEETING COUNT
+   Design professionnel - Version 1
+   ========================================= */
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-dark: #07111f;
+    --bg-blue: #0b1d33;
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+
+    --white: #ffffff;
+    --text: #f8fafc;
+    --text-muted: #94a3b8;
+
+    --card: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.12);
+
+    --success: #22c55e;
+    --danger: #f87171;
+
+    --shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- BODY ---------- */
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(59, 130, 246, 0.25),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(96, 165, 250, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(37, 99, 235, 0.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            var(--bg-dark),
+            var(--bg-blue)
+        );
+
+    background-attachment: fixed;
+}
+
+/* ---------- HEADER ---------- */
+
+.app-header {
+    width: 100%;
+    padding: 22px 18px;
+
+    background: rgba(7, 17, 31, 0.65);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.app-brand {
+    max-width: 650px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* ---------- LOGO ---------- */
+
+.app-logo {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+    box-shadow:
+        0 8px 25px rgba(37, 99, 235, 0.35);
+}
+
+.app-logo img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+.app-brand h1 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.app-brand p {
+    margin-top: 4px;
+
+    color: var(--text-muted);
+
+    font-size: 13px;
+}
+
+/* ---------- MAIN ---------- */
+
+.main-content {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    padding: 28px 16px 40px;
+}
+
+/* ---------- COUNTER CARD ---------- */
+
+.counter-card {
+    position: relative;
+
+    padding: 28px 20px;
+
+    border-radius: 28px;
+
+    background: var(--card);
+
+    border: 1px solid var(--card-border);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow: var(--shadow);
+
+    overflow: hidden;
+}
+
+/* Lumière décorative */
+
+.counter-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -70px;
+
+    background: rgba(59, 130, 246, 0.20);
+
+    border-radius: 50%;
+
+    filter: blur(10px);
+}
+
+/* ---------- MEETING INFO ---------- */
+
+.meeting-info {
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+}
+
+.meeting-info span {
+    display: inline-block;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: var(--primary-light);
+}
+
+.meeting-info p {
+    margin-top: 8px;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+}
+
+/* ---------- COUNTER ---------- */
+
+.counter {
+    position: relative;
+    z-index: 1;
+
+    margin: 42px 0;
+
+    text-align: center;
+}
+
+.counter span {
+    display: block;
+
+    font-size: clamp(76px, 20vw, 110px);
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: -5px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #93c5fd
+    );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    text-shadow:
+        0 10px 40px rgba(59, 130, 246, 0.15);
+}
+
+.counter p {
+    margin-top: 14px;
+
+    color: var(--text-muted);
+
+    font-size: 14px;
+}
+
+/* ---------- +1 BUTTON ---------- */
+
+.add-button {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    min-height: 72px;
+
+    border: none;
+    border-radius: 19px;
+
+    background: linear-gradient(
+        135deg,
+        #3b82f6,
+        #2563eb
+    );
+
+    color: white;
+
+    font-size: 20px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 12px 30px rgba(37, 99, 235, 0.35);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.add-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 35px rgba(37, 99, 235, 0.45);
+}
+
+.add-button:active {
+    transform: scale(0.97);
+}
+
+/* ---------- SECONDARY BUTTONS ---------- */
+
+.correction-actions {
+    position: relative;
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1.7fr;
+
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+.secondary-button,
+.reset-button {
+    min-height: 52px;
+
+    border-radius: 15px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.secondary-button {
+    background: rgba(255, 255, 255, 0.08);
+
+    color: var(--text);
+
+    border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.secondary-button:hover {
+    background: rgba(255, 255, 255, 0.13);
+}
+
+.reset-button {
+    background: rgba(248, 113, 113, 0.10);
+
+    color: #fca5a5;
+
+    border: 1px solid rgba(248, 113, 113, 0.18);
+}
+
+.reset-button:hover {
+    background: rgba(248, 113, 113, 0.16);
+}
+
+.secondary-button:active,
+.reset-button:active {
+    transform: scale(0.97);
+}
+
+/* ---------- OFFLINE STATUS ---------- */
+
+.status-card {
+    margin-top: 16px;
+
+    padding: 17px;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+
+    margin-top: 5px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.7);
+
+    flex-shrink: 0;
+}
+
+.status-card strong {
+    display: block;
+
+    font-size: 14px;
+}
+
+.status-card p {
+    margin-top: 5px;
+
+    color: var(--text-muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+/* ---------- FOOTER ---------- */
+
+.app-footer {
+    width: 100%;
+    margin-top: 20px;
+    padding: 30px 20px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(15, 45, 80, 0.95),
+            rgba(8, 30, 55, 0.98),
+            rgba(18, 55, 95, 0.95)
+        );
+
+    border-top: 1px solid rgba(96, 165, 250, 0.22);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+
+    box-shadow:
+        0 -12px 35px rgba(0, 0, 0, 0.18);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Lumière décorative du footer */
+
+.app-footer::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    top: -100px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: rgba(59, 130, 246, 0.18);
+
+    border-radius: 50%;
+
+    filter: blur(25px);
+}
+
+/* Contenu du footer */
+
+.app-footer p {
+    position: relative;
+    z-index: 1;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.7px;
+
+    color: #dbeafe;
+}
+
+/* ---------- SMALL SCREENS ---------- */
+
+@media (max-width: 380px) {
+
+    .app-header {
+        padding: 18px 14px;
+    }
+
+    .main-content {
+        padding: 20px 12px 30px;
+    }
+
+    .counter-card {
+        padding: 24px 14px;
+        border-radius: 24px;
+    }
+
+    .counter {
+        margin: 35px 0;
+    }
+
+    .add-button {
+        min-height: 66px;
+        font-size: 18px;
+    }
+
+    .correction-actions {
+        grid-template-columns: 1fr;
+    }
+}

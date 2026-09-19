@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meeting Count</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+
+<body>
+
+    <header class="app-header">
+        <div class="app-brand">
+            <div class="app-logo">
+    <img src="logo-meeting-count.png" alt="Meeting Count">
+</div>
+
+            <div>
+                <h1>Meeting Count</h1>
+                <p>Compteur d’effectif</p>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main-content">
+
+        <section class="counter-card">
+
+            <div class="meeting-info">
+                <span>RÉUNION DU JOUR</span>
+                <p id="meeting-date"></p>
+            </div>
+
+
+            <div class="counter">
+
+                <span id="count">0</span>
+
+                <p>personnes enregistrées</p>
+
+            </div>
+
+
+            <button class="add-button" id="add-button">
+                +1 Personne
+            </button>
+
+
+            <div class="correction-actions">
+
+                <button class="secondary-button" id="remove-button">
+                    −1
+                </button>
+
+                <button class="reset-button" id="reset-button">
+                    ↻ Remettre à zéro
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="status-card">
+
+            <span class="status-dot"></span>
+
+            <div>
+                <strong>Mode hors connexion</strong>
+                <p>Votre comptage est enregistré sur cet appareil.</p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="app-footer">
+        <p>Meeting Count</p>
+    </footer>
+
+<script src="app.js"></script>
+</body>
+</html>

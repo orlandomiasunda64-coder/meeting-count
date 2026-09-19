@@ -1,0 +1,19 @@
+{
+    "id": "/index.html",
+    "name": "Meeting Count",
+    "short_name": "Meeting Count",
+    "description": "Compteur d’effectif pour les réunions",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#07111f",
+    "theme_color": "#2563eb",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "icon-512.png",
+            "sizes": "1024x1024",
+            "type": "image/png",
+            "purpose": "any "
+        }
+    ]
+}
